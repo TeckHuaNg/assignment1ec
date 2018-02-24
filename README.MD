@@ -4,4 +4,4 @@
 
 <p>Bootstrap CSS is created by Thomas Park 2012-2018, Copyright 2011-2018 The Bootstrap Authors</p>
 
-<p>The live site can be found at <a href="https://shoesinventory.azurewebsites.net">https://shoesinventory.azurewebsites.net</a></p>
+<p>The live site can be found at <a href="https://shoeshop.azurewebsites.net/">https://shoeshop.azurewebsites.net/</a></p>
