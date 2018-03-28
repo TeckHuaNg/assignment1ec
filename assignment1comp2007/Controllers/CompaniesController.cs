@@ -10,16 +10,19 @@ using assignment1comp2007.Models;
 
 namespace assignment1comp2007.Controllers
 {
+    [Authorize]
     public class CompaniesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [OverrideAuthentication]
         // GET: Companies
         public ActionResult Index()
         {
             return View(db.Companies.ToList());
         }
 
+        [OverrideAuthentication]
         // GET: Companies/Details/5
         public ActionResult Details(int? id)
         {
