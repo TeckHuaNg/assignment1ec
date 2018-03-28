@@ -7,11 +7,14 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using assignment1comp2007.Models;
 using System.Configuration;
+using Owin.Security.Providers;
+using Owin.Security.Providers.LinkedIn;
 
 namespace assignment1comp2007
 {
     public partial class Startup
     {
+        
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -51,19 +54,22 @@ namespace assignment1comp2007
                 clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
                 clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: ConfigurationManager.AppSettings["TwitterConsumerKey"],
-            //   consumerSecret: ConfigurationManager.AppSettings["TwitterConsumerSecret"]);
+            app.UseTwitterAuthentication(
+               consumerKey: ConfigurationManager.AppSettings["TwitterConsumerKey"],
+               consumerSecret: ConfigurationManager.AppSettings["TwitterConsumerSecret"]);
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: ConfigurationManager.AppSettings["FacebookAppId"],
+               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
                 ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
             });
+
+            
+
         }
     }
 }
