@@ -15,14 +15,14 @@ namespace assignment1comp2007.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [OverrideAuthentication]
+        [OverrideAuthorization]
         // GET: Companies
         public ActionResult Index()
         {
             return View(db.Companies.ToList());
         }
 
-        [OverrideAuthentication]
+        [OverrideAuthorization]
         // GET: Companies/Details/5
         public ActionResult Details(int? id)
         {
