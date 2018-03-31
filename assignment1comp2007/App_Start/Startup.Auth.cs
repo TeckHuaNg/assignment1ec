@@ -9,6 +9,8 @@ using assignment1comp2007.Models;
 using System.Configuration;
 using Owin.Security.Providers;
 using Owin.Security.Providers.LinkedIn;
+using System.Web.Services.Description;
+using Owin.Security.Providers.GitHub;
 
 namespace assignment1comp2007
 {
@@ -54,9 +56,9 @@ namespace assignment1comp2007
                 clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
                 clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
 
-            app.UseTwitterAuthentication(
-               consumerKey: ConfigurationManager.AppSettings["TwitterConsumerKey"],
-               consumerSecret: ConfigurationManager.AppSettings["TwitterConsumerSecret"]);
+            //app.UseTwitterAuthentication(
+            //   consumerKey: ConfigurationManager.AppSettings["TwitterConsumerKey"],
+            //   consumerSecret: ConfigurationManager.AppSettings["TwitterConsumerSecret"]);
 
             app.UseFacebookAuthentication(
                appId: ConfigurationManager.AppSettings["FacebookAppId"],
@@ -68,7 +70,11 @@ namespace assignment1comp2007
                 ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
             });
 
-            
+            app.UseGitHubAuthentication(new GitHubAuthenticationOptions()
+            {
+                ClientId = ConfigurationManager.AppSettings["GitHubClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["GitHubClientSecret"]
+            });
 
         }
     }
