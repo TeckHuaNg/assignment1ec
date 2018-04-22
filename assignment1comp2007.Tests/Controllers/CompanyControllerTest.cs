@@ -55,5 +55,37 @@ namespace assignment1comp2007.Tests.Controllers
             //assert
             CollectionAssert.AreEqual(companies, actual);
         }
+
+        [TestMethod]
+        public void DetailsInvalidTest()
+        {
+            //act
+            var actual = (ViewResult)controller.Details(5);
+
+            //assert
+            Assert.AreEqual("Error", actual.ViewName);
+        }
+
+        [TestMethod]
+        public void DetailsNullId()
+        {
+            //act
+            var actual = (ViewResult)controller.Details(null);
+
+            //assert
+            Assert.AreEqual("Error", actual.ViewName);
+        }
+
+        [TestMethod]
+        public void DetailsValidIdTest()
+        {
+            //act
+            var actual = (Company)((ViewResult)controller.Details(2)).Model;
+
+            //assert
+            Assert.AreEqual(companies[1], actual);
+        }
+
+
     }
 }

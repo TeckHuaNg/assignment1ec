@@ -35,21 +35,22 @@ namespace assignment1comp2007.Controllers
             return View(db.Companies.ToList());
         }
 
-        //[OverrideAuthorization]
-        //// GET: Companies/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Company company = db.Companies.Find(id);
-        //    if (company == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(company);
-        //}
+        [OverrideAuthorization]
+        // GET: Companies/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
+            }
+            Company company = db.Companies.SingleOrDefault(c => c.BrandId == id);
+            if (company == null)
+            {
+                return View("Error");
+            }
+            return View(company);
+        }
 
         //// GET: Companies/Create
         //public ActionResult Create()
