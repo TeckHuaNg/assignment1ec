@@ -36,7 +36,7 @@ namespace assignment1comp2007.Controllers
         }
 
         [OverrideAuthorization]
-        // GET: Companies/Details/5
+        //GET: Companies/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,28 +52,29 @@ namespace assignment1comp2007.Controllers
             return View(company);
         }
 
-        //// GET: Companies/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Companies/Create
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
 
-        //// POST: Companies/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "BrandId,CompanyName,Description")] Company company)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Companies.Add(company);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        // POST: Companies/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "BrandId,CompanyName,Description")] Company company)
+        {
+            if (ModelState.IsValid)
+            {
+                //db.Companies.Add(company);
+                //db.SaveChanges();
+                db.Save(company);
+                return RedirectToAction("Index");
+            }
 
-        //    return View(company);
-        //}
+            return View("Create", company);
+        }
 
         // GET: Companies/Edit/5
         public ActionResult Edit(int? id)

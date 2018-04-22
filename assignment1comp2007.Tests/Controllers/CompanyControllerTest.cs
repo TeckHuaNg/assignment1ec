@@ -182,5 +182,50 @@ namespace assignment1comp2007.Tests.Controllers
             Assert.AreEqual("Index", actual.RouteValues["action"]);
         }
 
+        [TestMethod]
+        public void CreateViewLoads()
+        {
+            //act
+            var actual = (ViewResult)controller.Create();
+
+            //assert
+            Assert.AreEqual("Create", actual.ViewName);
+        }
+
+        [TestMethod]
+        public void CreateValidId()
+        {
+            //arrange
+            Company c = new Company
+            {
+                CompanyName = "New Company"
+            };
+
+            //act
+            var actual = (RedirectToRouteResult)controller.Create(c);
+
+            //assert
+            Assert.AreEqual("Index", actual.RouteValues["action"]);
+        }
+
+        [TestMethod]
+        public void CreateInvalidId()
+        {
+            //arrange
+            Company c = new Company
+            {
+                CompanyName = "New Company"
+            };
+
+            controller.ModelState.AddModelError("key", "create error");
+
+            //act
+            var actual = (ViewResult)controller.Create(c);
+
+            //assert
+            Assert.AreEqual("Create", actual.ViewName);
+        }
+
+
     }
 }
