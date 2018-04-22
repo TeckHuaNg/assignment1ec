@@ -86,6 +86,64 @@ namespace assignment1comp2007.Tests.Controllers
             Assert.AreEqual(companies[1], actual);
         }
 
+        [TestMethod]
+        public void EditValidId()
+        {
+            //act
+            var actual = ((ViewResult)controller.Edit(1)).Model;
+
+            //assert
+            Assert.AreEqual(companies[0], actual);
+        }
+
+        [TestMethod]
+        public void EditInvalidId()
+        {
+            //act
+            var actual = (ViewResult)controller.Edit(100);
+
+            //assert
+            Assert.AreEqual("Error", actual.ViewName);
+        }
+
+        [TestMethod]
+        public void EditNullId()
+        {
+            int? id = null;
+
+            //act
+            var actual = (ViewResult)controller.Edit(id);
+
+            //assert
+            Assert.AreEqual("Error", actual.ViewName);
+        }
+
+        //POST
+        [TestMethod]
+        public void EditPostValid()
+        {
+            //act
+            var actual = (RedirectToRouteResult)controller.Edit(companies[0]);
+
+            //assert
+            Assert.AreEqual("Index", actual.RouteValues["action"]);
+        }
+
+        [TestMethod]
+        public void EditPostInvalid()
+        {
+            //arrange
+            controller.ModelState.AddModelError("key", "update error");
+
+            //act
+            var actual = (ViewResult)controller.Edit(companies[0]);
+
+            //assert
+            Assert.AreEqual("Edit", actual.ViewName);
+        }
+
+
+
 
     }
 }
