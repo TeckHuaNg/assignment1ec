@@ -558,7 +558,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\EFCompaniesRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IMockCompaniesRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Shoe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
