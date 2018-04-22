@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assignment1comp2007.Models
 {
-    interface IMockCompaniesRepository
+    public interface IMockCompaniesRepository
     {
         IQueryable<Company> Companies {get;}
 
