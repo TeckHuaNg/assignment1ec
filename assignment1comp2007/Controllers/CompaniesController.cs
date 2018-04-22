@@ -108,31 +108,34 @@ namespace assignment1comp2007.Controllers
             return View("Edit", company);
         }
 
-        //// GET: Companies/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Company company = db.Companies.Find(id);
-        //    if (company == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(company);
-        //}
+        // GET: Companies/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
 
-        //// POST: Companies/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Company company = db.Companies.Find(id);
-        //    db.Companies.Remove(company);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+            }
+            Company company = db.Companies.SingleOrDefault(c => c.BrandId == id);
+            if (company == null)
+            {
+                return View("Error");
+            }
+            return View(company);
+        }
+
+        // POST: Companies/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Company company = db.Companies.SingleOrDefault(c => c.BrandId == id);
+            //db.Companies.Remove(company);
+            //db.SaveChanges();
+            db.Delete(company);
+            return RedirectToAction("Index");
+        }
 
         //protected override void Dispose(bool disposing)
         //{

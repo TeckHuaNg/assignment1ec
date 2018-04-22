@@ -142,8 +142,45 @@ namespace assignment1comp2007.Tests.Controllers
             Assert.AreEqual("Edit", actual.ViewName);
         }
 
+        [TestMethod]
+        public void DeleteValidId()
+        {
+            //act
+            var actual = ((ViewResult)controller.Delete(1)).Model;
 
+            //assert
+            Assert.AreEqual(companies[0], actual);
+        }
+        
+        [TestMethod]
+        public void DeleteInvalidId()
+        {
+            //act
+            var actual = (ViewResult)controller.Delete(10);
 
+            //assert
+            Assert.AreEqual("Error", actual.ViewName);
+        }
+
+        [TestMethod]
+        public void DeleteNullId()
+        {
+            //act
+            var actual = (ViewResult)controller.Delete(null);
+
+            //assert
+            Assert.AreEqual("Error", actual.ViewName);
+        }
+
+        [TestMethod]
+        public void DeletePostValid()
+        {
+            //act
+            var actual = (RedirectToRouteResult)controller.DeleteConfirmed(1);
+
+            //assert
+            Assert.AreEqual("Index", actual.RouteValues["action"]);
+        }
 
     }
 }
