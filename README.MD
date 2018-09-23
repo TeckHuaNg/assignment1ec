@@ -1,7 +1,7 @@
-<h1>COMP 2007 PM Assignment - Shoe Inventory</h1>
+<h1>COMP 2068 Assignment 2 - Phone Store</h1>
 
-<p>This is an application based on Microsoft's MVC Music Store. It is designed to be a shoe inventory, which allows users to add shoes and companies to the website.</p>
+<p>2 Additional Features: Create API that returns data in JSON format, LinkedIn Login</p>
 
 <p>Bootstrap CSS is created by Thomas Park 2012-2018, Copyright 2011-2018 The Bootstrap Authors</p>
 
-<p>The live site can be found at <a href="https://shoeshop.azurewebsites.net/">https://shoeshop.azurewebsites.net/</a></p>
+<p>The live site can be found at <a href="">https://shoeshop.azurewebsites.net/</a></p>
